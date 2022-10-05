@@ -2,20 +2,21 @@
 let employees = [];
 const urlAPI = `https://randomuser.me/api/?results=12&inc=name, picture,
 email, location, phone, dob &noinfo &nat=US`;
-const gridContainer = document.getElementById('grid-container');
-const modal = document.getElementById('modal');
-const modalContent = document.getElementById('modal-content');
-const modalClose = document.getElementById('close-btn');
-const employeeCard = document.getElementById('employee-card');
+const gridContainer = document.querySelector('.grid-container');
+const modal = document.querySelector('.modal');
+const modalContent = document.querySelector('.modal-content');
+const modalClose = document.querySelector('.close-btn');
+const employeeCard = document.querySelector('.employee-card');
 
 fetch(urlAPI)
     .then(res => res.json())
     .then(res => res.results)
-    .then(employeeData);
+    .then(employeeData)
+    .catch(err => console.log(err));
 
 // Employee data
-function employeeData(employee) {
-    let employees = employee;
+function employeeData(employeeData) {
+    let employees = employeeData;
 
     let employeeHTML = ``;
 
@@ -26,7 +27,7 @@ function employeeData(employee) {
         let img = employee.picture.large;
 
         employeeHTML += `
-            <div class="employee-card" id="employee-card" data-index="${index}">
+            <div class="employee-card" data-index="${index}">
                 <img class="employee-img" src="${img}" alt="${name.first} ${name.last}">
                 <div class="employee-info">
                     <h3 class="employee-name">${name.first} ${name.last}</h3>
@@ -41,16 +42,36 @@ function employeeData(employee) {
 }
 
 // Modal
-function toggleModal() {
+function displayModal(index) {
+    let { name, dob, phone, email, location: { city, street, state, postcode
+    }, picture } = employees[index];
+
+    console.log(phone);
+    let date =  new Date(dob.date);
+    
+    const modalHTML = `
+        <img class="modal-img" src="${picture.large}">
+        <div class="modal-text-container">
+            <h3 class="modal-name">${name.first} ${name.last}</h3>
+            <p class="modal-email">${email}</p>
+            <p class="modal-address">${city}</p>
+            <hr/>
+            <p>${phone}</p>
+            <p class="modal-address">${street}, ${state} ${postcode}</p>
+            <p>Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+        </div>
+    `;
+
     modal.classList.toggle('show-modal');
+    modalContent.innerHTML = modalHTML;
 }
 
-function windowOnClick(event) {
-    if (event.target === modal) {
-        toggleModal();
+// Event Listener
+gridContainer.addEventListener('click', e => {
+    if (e.target !== gridContainer) {
+        const card = e.target.closest('.employee-card');
+        const index = card.getAttribute('data-index');
+
+        displayModal(index);
     }
-}
-
-gridContainer.addEventListener('click', toggleModal);
-modalClose.addEventListener('click', toggleModal);
-window.addEventListener('click', windowOnClick);
+});
