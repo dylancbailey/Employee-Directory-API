@@ -10,21 +10,17 @@ p {
 }
 
 header {
-    max-width: 1024px;
-    width: 100%;
+    max-width: 1200px;
     display: flex;
     justify-content: flex-start;
     margin: 3rem auto 1rem auto;
-    padding: 0 1rem;
 }
 .grid-container {
-    max-width: 1024px;
-    width: 100%;
+    max-width: 1200px;
     display: grid;
     grid-auto-rows: auto;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 1rem;
-    padding: 1rem;
     margin: 0 auto;
 }
 /* Employee */
@@ -58,7 +54,7 @@ header {
     height: 100%;
     background-color: rgba(0,0,0,.5);
     opacity: 0;
-    visibility: hidden;
+    /* visibility: hidden; */
     transform: scale(1.1);
     transform: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;;
 }
