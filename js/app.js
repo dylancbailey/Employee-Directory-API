@@ -65,8 +65,7 @@ function displayModal(index) {
     modalContent.innerHTML = modalHTML;
 }
 
-// Event Listener
-gridContainer.addEventListener('click', e => {
+function modalHandler(e) {
     const target = e.target;
     if (target !== gridContainer) {
         const card = target.closest('.employee-card');
@@ -74,8 +73,8 @@ gridContainer.addEventListener('click', e => {
 
         displayModal(index);
     }
-});
+}
 
-modalClose.addEventListener('click', () => {
-    modal.classList.toggle('show-modal');
-});
+// Event Listener
+gridContainer.addEventListener('click', modalHandler);
+modalClose.addEventListener('click', () => modal.classList.toggle('show-modal'));
