@@ -46,7 +46,6 @@ function displayModal(index) {
     let { name, dob, phone, email, location: { city, street, state, postcode
     }, picture } = employees[index];
 
-    console.log(employees[index]);
     let date = new Date(dob.date);
     
     const modalHTML = `
@@ -68,8 +67,9 @@ function displayModal(index) {
 
 // Event Listener
 gridContainer.addEventListener('click', e => {
-    if (e.target !== gridContainer) {
-        const card = e.target.closest('.employee-card');
+    const target = e.target;
+    if (target !== gridContainer) {
+        const card = target.closest('.employee-card');
         const index = card.getAttribute('data-index');
 
         displayModal(index);
