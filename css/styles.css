@@ -1,0 +1,47 @@
+* {
+    box-sizing: border-box;
+}
+
+h1,
+h3, 
+p {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    max-width: 1024px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+.grid-container {
+    max-width: 1024px;
+    width: 100%;
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+    margin: 0 auto;
+}
+.employee-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background: rgba(0,0,0,.4);
+    padding: 1rem;
+    border-radius: 10px;
+}
+.employee-img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.employee-info {
+    margin-left: 1rem;
+}
