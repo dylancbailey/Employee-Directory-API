@@ -46,7 +46,7 @@ header {
     margin: .5rem 0;
 }
 
-/* MODAL */
+/* MODAL CONTAINER */
 .modal {
     position: fixed;
     left: 0;
@@ -88,6 +88,7 @@ header {
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
+/* MODEL CONTENT */
 .modal-content {
     display: flex;
     flex-direction: column;
@@ -96,6 +97,13 @@ header {
     text-align: center;
     padding: 2rem;
 }
-.modal-email {
-    margin: 1rem 0;
+.modal-divider {
+    margin: 1.5rem 0;
+}
+.modal-img {
+    margin-bottom: 1rem;
+}
+.modal-email,
+.modal-address:nth-of-type(4) {
+    padding: .5rem 0;
 }
