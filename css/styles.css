@@ -32,7 +32,8 @@ header {
     padding: 1.5rem;
     border-radius: 10px;
 }
-.employee-img {
+.employee-img,
+.modal-img {
     width: 100px;
     height: 100px;
     object-fit: cover;
@@ -85,4 +86,16 @@ header {
     visibility: visible;
     transform: scale(1.0);
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+}
+.modal-email {
+    margin: 1rem 0;
 }

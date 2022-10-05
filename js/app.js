@@ -16,7 +16,7 @@ fetch(urlAPI)
 
 // Employee data
 function employeeData(employeeData) {
-    let employees = employeeData;
+    employees = employeeData;
 
     let employeeHTML = ``;
 
@@ -46,8 +46,8 @@ function displayModal(index) {
     let { name, dob, phone, email, location: { city, street, state, postcode
     }, picture } = employees[index];
 
-    console.log(phone);
-    let date =  new Date(dob.date);
+    console.log(employees[index]);
+    let date = new Date(dob.date);
     
     const modalHTML = `
         <img class="modal-img" src="${picture.large}">
@@ -57,7 +57,7 @@ function displayModal(index) {
             <p class="modal-address">${city}</p>
             <hr/>
             <p>${phone}</p>
-            <p class="modal-address">${street}, ${state} ${postcode}</p>
+            <p class="modal-address">${street.number} ${street.name}, ${state} ${postcode}</p>
             <p>Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
         </div>
     `;
@@ -74,4 +74,8 @@ gridContainer.addEventListener('click', e => {
 
         displayModal(index);
     }
+});
+
+modalClose.addEventListener('click', () => {
+    modal.classList.toggle('show-modal');
 });
