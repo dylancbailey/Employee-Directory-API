@@ -14,7 +14,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: flex-start;
-    margin: 0 auto;
+    margin: 3rem auto 1rem auto;
     padding: 0 1rem;
 }
 .grid-container {
@@ -27,12 +27,13 @@ header {
     padding: 1rem;
     margin: 0 auto;
 }
+/* Employee */
 .employee-card {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background: rgba(0,0,0,.4);
-    padding: 1rem;
+    background: rgba(0,0,0,.1);
+    padding: 1.5rem;
     border-radius: 10px;
 }
 .employee-img {
@@ -41,7 +42,51 @@ header {
     object-fit: cover;
     border-radius: 50%;
 }
-
 .employee-info {
     margin-left: 1rem;
+}
+.employee-email {
+    margin: .5rem 0;
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transform: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;;
+}
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 24rem;
+    border-radius: 0.5rem;
+}
+.close-btn {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+.close-btn:hover {
+    background-color: darkgray;
+}
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
