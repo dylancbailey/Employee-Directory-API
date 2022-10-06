@@ -1,5 +1,6 @@
 // API
 let employees = [];
+let number 
 const urlAPI = `https://randomuser.me/api/?results=12&inc=name, picture,
 email, location, phone, dob &noinfo &nat=US`;
 const gridContainer = document.querySelector('.grid-container');
@@ -7,7 +8,10 @@ const modal = document.querySelector('.modal');
 const modalContent = document.querySelector('.modal-content');
 const modalClose = document.querySelector('.close-btn');
 const employeeCard = document.querySelector('.employee-card');
+const searchBar = document.querySelector('.search');
+const rightArrow = document.querySelector('.right-arrow');
 
+// Fetch API
 fetch(urlAPI)
     .then(res => res.json())
     .then(res => res.results)
@@ -40,7 +44,6 @@ function displayEmployees(employeeData) {
     });
 
     gridContainer.innerHTML = employeeHTML;
-    console.log(employees);
 }
 
 // Modal
@@ -53,7 +56,7 @@ function showModal(index) {
     let modalHTML = ``;
 
     modalHTML += `
-        <img class="modal-img" src="${picture.large}">
+        <img class="modal-img" src="${picture.large}" data-index="${index}">
         <div class="modal-text-container">
             <h3 class="modal-name">${name.first} ${name.last}</h3>
             <p class="modal-email">${email}</p>
@@ -65,21 +68,57 @@ function showModal(index) {
         </div>
     `;
 
-    toggleClass();
+    modal.classList.add('show-modal');
     modalContent.innerHTML = modalHTML;
+
 }
 
-const checkCard = e => {
+const checkCard = (e) => {
     let target = e.target;
     if (target !== gridContainer) {
         const card = target.closest('.employee-card');
         const index = card.getAttribute('data-index');
-        showModal(index);
+        showModal(index);    
     }
 };
 
 const toggleClass = () => modal.classList.toggle('show-modal');
 
-// Event Listener
+// Modal Arrows
+const modalArrows = e => {
+    const target = e.target.classList.value;
+    const img = document.querySelector('.modal-img');
+    let index = img.getAttribute('data-index');
+    index = parseInt(index);
+
+    if (index < 11 && index != 12) {
+        if (target === 'right-arrow') {
+            showModal(index += 1);
+        }
+    }
+    if (index < 12 && index != 0) {
+        if (target === 'left-arrow') {
+            showModal(index -= 1);
+        }
+    }
+}
+
+// Search Bar
+const filter = e => {
+    let currentValue = e.target.value.toLowerCase();
+    let employeeNames = document.querySelectorAll('.employee-name');
+
+    employeeNames.forEach(name => {
+        if (name.textContent.toLowerCase().includes(currentValue)) {
+            name.parentNode.parentNode.style.display = 'flex';
+        } else {
+            name.parentNode.parentNode.style.display = 'none';
+        }
+    });
+};
+
+// Event Listeners
 gridContainer.addEventListener('click', checkCard);
 modalClose.addEventListener('click', toggleClass);
+searchBar.addEventListener('keyup', filter);
+modal.addEventListener('click', modalArrows);
