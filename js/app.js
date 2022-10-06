@@ -11,20 +11,21 @@ const employeeCard = document.querySelector('.employee-card');
 fetch(urlAPI)
     .then(res => res.json())
     .then(res => res.results)
-    .then(employeeData)
+    .then(displayEmployees)
     .catch(err => console.log(err));
 
-// Employee data
-function employeeData(employeeData) {
+
+// Display Employees
+function displayEmployees(employeeData) {
     employees = employeeData;
 
     let employeeHTML = ``;
 
     employees.forEach((employee, index) => {
         let name = employee.name;
+        let img = employee.picture.large;
         let email = employee.email;
         let location = employee.location;
-        let img = employee.picture.large;
 
         employeeHTML += `
             <div class="employee-card" data-index="${index}">
@@ -39,16 +40,19 @@ function employeeData(employeeData) {
     });
 
     gridContainer.innerHTML = employeeHTML;
+    console.log(employees);
 }
 
 // Modal
-function displayModal(index) {
-    let { name, dob, phone, email, location: { city, street, state, postcode
-    }, picture } = employees[index];
+function showModal(index) {
+    let { name, email, dob, phone, location: 
+        { street, city, state, postcode }, 
+        picture } = employees[index];
 
     let date = new Date(dob.date);
-    
-    const modalHTML = `
+    let modalHTML = ``;
+
+    modalHTML += `
         <img class="modal-img" src="${picture.large}">
         <div class="modal-text-container">
             <h3 class="modal-name">${name.first} ${name.last}</h3>
@@ -61,20 +65,21 @@ function displayModal(index) {
         </div>
     `;
 
-    modal.classList.toggle('show-modal');
+    toggleClass();
     modalContent.innerHTML = modalHTML;
 }
 
-function modalHandler(e) {
-    const target = e.target;
+const checkCard = e => {
+    let target = e.target;
     if (target !== gridContainer) {
         const card = target.closest('.employee-card');
         const index = card.getAttribute('data-index');
-
-        displayModal(index);
+        showModal(index);
     }
-}
+};
+
+const toggleClass = () => modal.classList.toggle('show-modal');
 
 // Event Listener
-gridContainer.addEventListener('click', modalHandler);
-modalClose.addEventListener('click', () => modal.classList.toggle('show-modal'));
+gridContainer.addEventListener('click', checkCard);
+modalClose.addEventListener('click', toggleClass);
