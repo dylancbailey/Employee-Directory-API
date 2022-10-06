@@ -117,3 +117,17 @@ header {
 .modal-address:nth-of-type(4) {
     padding: .5rem 0;
 }
+.arrows {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+}
+.left-arrow,
+.right-arrow {
+    padding: .5rem;
+}
+.left-arrow,
+.right-arrow:hover {
+    cursor: pointer;
+}

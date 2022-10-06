@@ -65,6 +65,9 @@ function showModal(index) {
             <p>${phone}</p>
             <p class="modal-address">${street.number} ${street.name}, ${state} ${postcode}</p>
             <p>Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
+            <div class="arrows">
+                <span class="left-arrow">&larr;</span><span class="right-arrow">&rarr;</span>
+            </div>
         </div>
     `;
 
