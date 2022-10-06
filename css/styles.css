@@ -6,7 +6,8 @@
 }
 
 body {
-    background-color: #232946;
+    background: rgb(73,83,130);
+    background: linear-gradient(90deg, rgba(73,83,130,1) 0%, rgba(35,41,70,1) 100%);
 }
 
 h1,
@@ -55,6 +56,9 @@ header {
     border-radius: 10px;
     height: 2.5rem;
     margin-top: 1rem;
+}
+.search:focus {
+    outline: 1px solid #181818;
 }
 ::placeholder {
     padding-left: .5rem;
