@@ -1,5 +1,12 @@
+/* Base Styles */
 * {
     box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 300;
+}
+
+body {
+    background-color: #232946;
 }
 
 h1,
@@ -9,16 +16,16 @@ p {
     margin: 0;
 }
 
-header {
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    align-content: center;
-    margin: 3rem auto 1rem auto;
+h1 {
+    font-weight: 700;
+    color: #fffffe;
 }
-
-.title {
-    align-self: center;
+h3 {
+    font-weight: 500;
+    color: #0d0d0d;
+}
+p {
+    color: #2a2a2a;
 }
 
 .grid-container {
@@ -29,18 +36,44 @@ header {
     gap: 1rem;
     margin: 0 auto;
 }
+
+/* Header */
+header {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    margin: 3rem auto 1rem auto;
+}
+
+.title {
+    align-self: center;
+}
+.search {
+    border: 2px solid #181818;
+    border-radius: 10px;
+    height: 2.5rem;
+    margin-top: 1rem;
+}
+::placeholder {
+    padding-left: .5rem;
+}
+
 /* Employee */
 .employee-card {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    background: rgba(0,0,0,.1);
     padding: 1.5rem;
     border-radius: 10px;
+    background-color: #fffffe;
+    transition: background-color .2s ease;
 }
 /* ADD HOVER */
 .employee-card:hover {
     cursor: pointer;
+    background-color: rgba(255, 255, 254, .8);
 }
 .employee-img,
 .modal-img {
@@ -74,7 +107,7 @@ header {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: #fffffe;
     padding: 1rem 1.5rem;
     width: 24rem;
     border-radius: 0.5rem;
@@ -98,7 +131,7 @@ header {
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
 }
 
-/* MODEL CONTENT */
+/* MODAL CONTENT */
 .modal-content {
     display: flex;
     flex-direction: column;
@@ -140,5 +173,8 @@ header {
     }
     .title {
         align-self: flex-start;
+    }
+    .search {
+        margin-top: 0;
     }
 }
