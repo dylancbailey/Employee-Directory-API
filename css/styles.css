@@ -104,7 +104,7 @@ header {
     opacity: 0;
     visibility: hidden;
     transform: scale(1.1);
-    transform: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;;
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;;
 }
 .modal-wrapper {
     position: absolute;

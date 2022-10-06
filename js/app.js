@@ -1,15 +1,12 @@
 // API
 let employees = [];
-let number 
 const urlAPI = `https://randomuser.me/api/?results=12&inc=name, picture,
 email, location, phone, dob &noinfo &nat=US`;
 const gridContainer = document.querySelector('.grid-container');
 const modal = document.querySelector('.modal');
 const modalContent = document.querySelector('.modal-content');
 const modalClose = document.querySelector('.close-btn');
-const employeeCard = document.querySelector('.employee-card');
 const searchBar = document.querySelector('.search');
-const rightArrow = document.querySelector('.right-arrow');
 
 // Fetch API
 fetch(urlAPI)
