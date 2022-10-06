@@ -9,16 +9,16 @@ p {
     margin: 0;
 }
 
-.hidden {
-    visibility: hidden;
-}
-
 header {
     max-width: 1200px;
     display: flex;
+    flex-direction: column;
     align-content: center;
-    justify-content: space-between;
     margin: 3rem auto 1rem auto;
+}
+
+.title {
+    align-self: center;
 }
 
 .grid-container {
@@ -130,4 +130,15 @@ header {
 .left-arrow,
 .right-arrow:hover {
     cursor: pointer;
+}
+
+/* Media Queries */
+@media screen and (min-width: 768px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .title {
+        align-self: flex-start;
+    }
 }
